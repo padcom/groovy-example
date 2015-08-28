@@ -6,6 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- The artifactId and version are used throughout the build process for different purposes -->
 	<groupId>org.example</groupId>
 	<artifactId>groovy-example</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -50,17 +51,19 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<compilerId>groovy-eclipse-compiler</compilerId>
 					<verbose>false</verbose>
 				</configuration>
 				<dependencies>
+					<!-- This defines the compiler bridge to process all files (.java and .groovy) -->
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
 						<artifactId>groovy-eclipse-compiler</artifactId>
 						<version>2.9.2-01</version>
 					</dependency>
+					<!-- This defines the compiler used by the plugin -->
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
 						<artifactId>groovy-eclipse-batch</artifactId>
@@ -82,6 +85,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>appassembler-maven-plugin</artifactId>
 				<version>1.9</version>
+				<!-- The package will be generated each time the project is build -->
 				<executions>
 					<execution>
 						<phase>package</phase>
@@ -91,11 +95,16 @@
 					</execution>
 				</executions>
 				<configuration>
+					<!-- Application configuration folder definition -->
 					<configurationDirectory>conf</configurationDirectory>
+					<!-- Its source is stored in src/main/config -->
 					<copyConfigurationDirectory>true</copyConfigurationDirectory>
+					<!-- It is going to be available on the classpath with the highest priority -->
 					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
-					<repositoryLayout>flat</repositoryLayout>
+					<!-- All dependencies will be stored in the lib folder as a flat list of files -->
 					<repositoryName>lib</repositoryName>
+					<repositoryLayout>flat</repositoryLayout>
+					<!-- The main class is org.example.Program -->
 					<programs>
 						<program>
 							<id>${project.artifactId}</id>
