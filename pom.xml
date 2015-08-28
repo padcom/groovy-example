@@ -31,6 +31,25 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.2</version>
 		</dependency>
+		<!-- Test dependencies I especially like -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>1.0-groovy-2.4</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -131,6 +150,62 @@
 					</descriptors>
 				</configuration>
 			</plugin>
+			<!-- By default integration tests are not executed but all specifications are -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<useFile>false</useFile>
+					<includes>
+						<include>**/*Test.java</include>
+						<include>**/*Spec.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+						<exclude>**/*IntegrationSpec.java</exclude>
+						<exclude>**/*IT*.java</exclude>
+						<exclude>**/*IT.java</exclude>
+						<exclude>**/*ITCase.java</exclude>
+						<exclude>**/*ITSpec.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<!-- This profile enables the execution of integration tests -->
+		<profile>
+			<id>integration-tests</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<version>2.18.1</version>
+						<configuration>
+							<includes>
+								<include>**/*IntegrationTest.java</include>
+								<include>**/*IntegrationSpec.java</include>
+								<include>**/*IT*.java</include>
+								<include>**/*IT.java</include>
+								<include>**/*ITCase.java</include>
+								<include>**/*ITSpec.java</include>
+							</includes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>failsafe-integration-tests</id>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>integration-test</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
