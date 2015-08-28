@@ -11,7 +11,7 @@
 	<includeBaseDirectory>true</includeBaseDirectory>
 
 	<fileSets>
-	<!-- add the unix shell file in th bin folder, and set the execute bit -->
+		<!-- add the unix shell file in th bin folder, and set the execute bit -->
 		<fileSet>
 			<directory>${project.build.directory}/appassembler</directory>
 			<includes>
