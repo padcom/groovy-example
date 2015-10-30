@@ -11,7 +11,7 @@
 	<artifactId>groovy-example</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
-	<name>Examples :: Groovy example</name>
+	<name>Examples :: Groovy example ;)</name>
 
 	<dependencies>
 		<!-- This is the Groovy runtime and is always required by Groovy applications -->
