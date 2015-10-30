@@ -4,8 +4,8 @@ stages:
 
 clean:
   stage: clean
-  script: "mvn clean"
+  script: "mvn -B clean"
 
 compile:
   stage: build
-  script: "mvn -Dmaven.repo.local=target/repository install"
+  script: "mvn -B -Dmaven.repo.local=target/repository install"
