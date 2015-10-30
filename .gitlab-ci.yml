@@ -1,3 +1,11 @@
+stages:
+  - clean
+  - build
+
+clean:
+  stage: clean
+  script: "mvn clean"
+
 compile:
   stage: build
-  script: "mvn clean install"
+  script: "mvn -Dmaven.repo.local=target/repository install"
