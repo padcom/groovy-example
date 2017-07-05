@@ -9,7 +9,7 @@ import groovy.util.logging.Slf4j
 
 // Writing toString by hand is just borring...
 @ToString(includeNames = true, includePackage = false)
-// Manual definition of a logger is just as borring as the above
+// Manual definition of a logger is just as boring as the above
 @Slf4j
 class Person {
 	// Properties rule!
