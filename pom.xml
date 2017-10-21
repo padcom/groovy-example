@@ -63,16 +63,31 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>bintray</id>
+			<name>Groovy Bintray</name>
+			<url>https://dl.bintray.com/groovy/maven</url>
+			<releases>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<build>
 		<plugins>
 			<!-- The main definition of the Groovy compiler -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
+				<version>3.6.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.9</source>
+					<target>1.9</target>
 					<compilerId>groovy-eclipse-compiler</compilerId>
+					<compilerArgument>indy</compilerArgument>
 					<verbose>false</verbose>
 				</configuration>
 				<dependencies>
@@ -80,13 +95,13 @@
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
 						<artifactId>groovy-eclipse-compiler</artifactId>
-						<version>2.9.2-01</version>
+						<version>2.9.2-03</version>
 					</dependency>
 					<!-- This defines the compiler used by the plugin -->
 					<dependency>
 						<groupId>org.codehaus.groovy</groupId>
 						<artifactId>groovy-eclipse-batch</artifactId>
-						<version>2.4.3-01</version>
+						<version>2.4.12-04</version>
 					</dependency>
 				</dependencies>
 			</plugin>
